@@ -1,7 +1,5 @@
 import os
-import tempfile
 import requests
-
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -17,7 +15,9 @@ def hello_world():
         # Download the image from the URL
         image_response = requests.get(data['url'])
         image_extension = '.' + image_response.headers['Content-Type'].split('/')[-1]
-        image_path = os.path.join(os.getcwd(), 'temp', f"image{image_extension}")
+        temp_dir = os.path.join(os.path.dirname(__file__), '..', 'temp')
+        os.makedirs(temp_dir, exist_ok=True)
+        image_path = os.path.join(temp_dir, f"image{image_extension}")
         with open(image_path, 'wb') as temp_file:
             temp_file.write(image_response.content)
 
