@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask_pymongo import MongoClient
+from pymongo import MongoClient
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb+srv://vdssystem0:<VA123AVdkd>@cluster0.vdo3rvu.mongodb.net/test?retryWrites=true&w=majority"
