@@ -1,12 +1,6 @@
-from flask import Flask, request
-
+from flask import Flask
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.get('/')
 def hello_world():
-    if request.method == 'POST':
-        id = request.json['id']
-        print(id)
-        return "Received ID: " + str(id)
-    else:
-        return "Hello, World!"
+    return "Hello, World!"
