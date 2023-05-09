@@ -1,0 +1,12 @@
+train: /content/drive/MyDrive/YOLO_SENIOR/train/images
+val: /content/drive/MyDrive/YOLO_SENIOR/valid/images
+
+nc: 2
+names: ['Accident', 'nonAccident']
+
+roboflow:
+  workspace: qatar-university-8ugj6
+  project: vads
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/qatar-university-8ugj6/vads/dataset/1
