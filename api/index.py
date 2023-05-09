@@ -12,7 +12,7 @@ def hello_world():
         id = request.json['id']
         url = request.json['url']
         print(url)
-        db.db.collection.insert_one({"id": "url"})
+        user_collection.insert_one({"id": id, "url": url})
         return "Connected to the data base!"
     else:
         return "Hello, World!"
