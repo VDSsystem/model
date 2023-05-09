@@ -1,6 +1,7 @@
 from flask import Flask, request
 import requests
 import tempfile
+import os
 
 app = Flask(__name__)
 
@@ -14,11 +15,10 @@ def hello_world():
 
         # Download the image from the URL
         image_response = requests.get(data['url'])
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+        image_extension = '.' + image_response.headers['Content-Type'].split('/')[-1]
+        temp_fd, image_path = tempfile.mkstemp(suffix=image_extension)
+        with os.fdopen(temp_fd, 'wb') as temp_file:
             temp_file.write(image_response.content)
-            temp_file.flush()
-            temp_file.close()
-            image_path = temp_file.name
 
         return f"Image downloaded to {image_path}"
     else:
