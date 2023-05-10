@@ -1,10 +1,9 @@
 from flask import Flask, request, jsonify
 import requests
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 app = Flask(__name__)
-CORS(app, support_credentials=True)
+cors = CORS(app, resources={r'*': {'origins': '*'}})
 @app.route('/', methods=['GET', 'POST'])
-@cross_origin(supports_credentials=True)
 def hello_world():
     if request.method == 'POST':
         id = request.json['id']
