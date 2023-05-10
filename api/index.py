@@ -17,7 +17,6 @@ def hello_world():
         command = f"python ./yolov5/detect.py --source {url} --weights ./best.pt"
         process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
-         # Return the output from the detect.py script to the client
         resp = jsonify({'output': output.decode('utf-8')})
         resp.headers.add('Access-Control-Allow-Origin', '*')
         return resp
