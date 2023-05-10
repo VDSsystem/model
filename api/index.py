@@ -13,7 +13,7 @@ def hello_world():
         data = response.json()
         url = data['url']
         # create the response with the Access-Control-Allow-Origin header
-        resp = jsonify({url})
+        resp = jsonify({'url': url})
         resp.headers.add('Access-Control-Allow-Origin', '*')
         return resp
     else:
