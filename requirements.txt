@@ -1,9 +1,5 @@
 Flask
 requests
 flask-cors
-argparse
-pathlib
-requests
-torch
-numpy
+
 
