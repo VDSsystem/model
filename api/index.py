@@ -9,6 +9,7 @@ def hello_world():
         url = f"https://vadss.vercel.app/api/savedImages?id={id}"
         response = requests.get(url)
         data = response.json()
-        return f"Image URL: {data['url']}"
+        url = data['url']
+        return url
     else:
-        return "Hello, World!"
+        return "YOLOv5 Model APP"
