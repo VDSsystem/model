@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import requests
 app = Flask(__name__)
 
@@ -10,6 +10,9 @@ def hello_world():
         response = requests.get(url)
         data = response.json()
         url = data['url']
-        return url
+        # create the response with the Access-Control-Allow-Origin header
+        resp = jsonify({url})
+        resp.headers.add('Access-Control-Allow-Origin', '*')
+        return resp
     else:
         return "YOLOv5 Model APP"
