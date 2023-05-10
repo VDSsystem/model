@@ -14,10 +14,7 @@ def hello_world():
         data = response.json()
         url = data['url']
         # Call the detect.py script with the image URL as an argument
-        command = f"python ./yolov5/detect.py --source {url} --weights ./best.pt"
-        process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-        output, error = process.communicate()
-        resp = jsonify({'output': output.decode('utf-8')})
+        resp = jsonify({url})
         resp.headers.add('Access-Control-Allow-Origin', '*')
         return resp
     else:
