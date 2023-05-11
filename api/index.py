@@ -1,9 +1,6 @@
 from flask import Flask, request, jsonify
 import requests
 from flask_cors import CORS
-from seg import get_yolov5
-model = get_yolov5()
-
 
 app = Flask(__name__)
 cors = CORS(app, resources={r'*': {'origins': '*'}})
@@ -16,14 +13,8 @@ def hello_world():
         data = response.json()        
     # Download the image from the URL
         imageURL =  data['url']
-        if model:
-            # Model is not empty, do something with it
-            response = {'url': imageURL}
-            response.headers.add('Access-Control-Allow-Origin', '*')
-            return jsonify(response)
-        else:
-            # Model is empty, return an error message
-            error_response = {'error': 'Model is not initialized'}
-            return jsonify(error_response), 500
+        response = {'url': imageURL}
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return jsonify(response)
     else:
         return "YOLOv5 Model APP"
