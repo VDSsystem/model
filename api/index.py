@@ -12,8 +12,8 @@ def hello_world():
         response = requests.get(url)
         data = response.json()
         url = data['url']
-        # Call the detect.py script with the image URL as an argument
-        resp = jsonify({url})
+    # create the response with the Access-Control-Allow-Origin header
+        resp = jsonify({'url': url})
         resp.headers.add('Access-Control-Allow-Origin', '*')
         return resp
     else:
