@@ -1,5 +1,9 @@
 Flask
 requests
 flask-cors
+opencv-python
+numpy
+onnxruntime
+requests
 
 
